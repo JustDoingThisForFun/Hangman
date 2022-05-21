@@ -10,7 +10,7 @@ export class HangmanService {
 
   constructor(private http: HttpClient) { }
 
-  getQuestions(jsonPath: string = defaultJSONPath) {
+  getSecretWords(jsonPath: string = defaultJSONPath) {
     return this.http.get<{category: string, items: string[]}>(jsonPath);
   }
 }
