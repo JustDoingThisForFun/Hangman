@@ -24,10 +24,15 @@ export class HangmanComponent implements OnInit {
   }
 
   guess(letter: string) {
-    if (this.guesses.includes(letter)) {
+    if (!letter || this.guesses.includes(letter)) {
       return;
     }
     this.guesses.push(letter);
+  }
+
+  dummyClick() {
+    const key = prompt('Enter a key') || '';
+    this.guess(key);
   }
 
   reset() {
