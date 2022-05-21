@@ -30,6 +30,8 @@ export class HangmanComponent implements OnInit {
     this.guesses.push(letter);
   }
 
+  https://www.youtube.com/watch?v=usPsRB-jNjI 23:35
+
   dummyClick() {
     const key = prompt('Enter a key') || '';
     this.guess(key);
