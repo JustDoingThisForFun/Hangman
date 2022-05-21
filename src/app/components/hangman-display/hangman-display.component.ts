@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hangman-display',
@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hangman-display.component.css']
 })
 export class HangmanDisplayComponent implements OnInit {
+  @Input() guesses: string[] = [];
+  @Input() secretWord: string = '';
 
-  constructor() { }
+  MAX_GUESSES = 7;
+  guessesRemaining;
+
+  constructor() {
+    this.guessesRemaining = this.MAX_GUESSES;
+  }
 
   ngOnInit(): void {
   }
