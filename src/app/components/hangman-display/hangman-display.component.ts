@@ -7,7 +7,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from
 })
 export class HangmanDisplayComponent implements OnInit, OnChanges {
   @Input() guesses: string[] = [];
-  @Input() secretWord: string = '';
+  @Input() question: string = '';
 
   MAX_GUESSES = 7;
   guessesRemaining;
@@ -20,10 +20,23 @@ export class HangmanDisplayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['guesses'].currentValue &&
-        changes['guesses'].currentValue.length &&
-        changes['guesses'].currentValue != changes['guesses'].previousValue) {
-      console.log(changes['guesses'].currentValue)
+    const guessesCurrentValue: [] = changes?.['guesses']?.currentValue;
+    if (guessesCurrentValue &&
+      guessesCurrentValue.length &&
+      guessesCurrentValue != changes?.['guesses'].previousValue) {
+      console.log(guessesCurrentValue)
     }
+    this.checkGuess(guessesCurrentValue[guessesCurrentValue.length - 1]);
+  }
+
+  checkGuess(letter: string) {
+    let didWind = false;
+    this.guessesRemaining -= this.wrongGuess(letter);
+  }
+
+  // Checks if the guessed letter is in the secretWord string (g = global, i = case sensetive)
+  wrongGuess(letter: string) {
+    const match = this.question.match(new RegExp(letter, 'gi'));
+    return match ? 0 : 1;
   }
 }

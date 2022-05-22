@@ -9,7 +9,7 @@ import { HangmanService } from 'src/app/services/hangman.service';
 export class HangmanComponent implements OnInit {
 
   question: string = '';
-  secretWords: string[] = [];
+  secretWord: string[] = [];
   guesses: string[] = [];
   category: string = '';
 
@@ -17,7 +17,7 @@ export class HangmanComponent implements OnInit {
 
   ngOnInit(): void {
     this.hangmanService.getSecretWords().subscribe((response) => {
-      this.secretWords = response.items;
+      this.secretWord = response.items;
       this.category = response.category;
       this.selectNewWord();
     });
@@ -41,8 +41,8 @@ export class HangmanComponent implements OnInit {
   }
 
   selectNewWord() {
-    const randomWord = Math.floor(Math.random() * this.secretWords.length);
-    this.question = this.secretWords[randomWord];
+    const randomWord = Math.floor(Math.random() * this.secretWord.length);
+    this.question = this.secretWord[randomWord];
     console.log(this.question);
   }
 }
