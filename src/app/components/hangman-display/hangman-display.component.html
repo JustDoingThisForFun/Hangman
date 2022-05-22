@@ -11,7 +11,7 @@
   <line id="base4Longer" fill="none" stroke="#000000" stroke-width="4.505" stroke-miterlimit="10" x1="72.797"
     y1="79.357" x2="72.797" y2="35.336" />
 
-  <g id="man">
+  <g id="man" [class.man-bounce]="guessesRemaining <= 0" *ngIf="!success">
     <g id="base5" *ngIf="guessesRemaining <= 6">
       <!-- this is the mans face-->
       <path id="happy1_1_" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M97.201,82.503
@@ -77,7 +77,7 @@
      					C72.361,175.398,73.718,174.924,74.167,173.943z" />
   </g>
   <!--end man group-->
-  <g id="happy">
+  <g id="happy" class="man-bounce" *ngIf="success">
     <path id="happy2" fill="none" stroke="#000000" stroke-width="4" stroke-miterlimit="10" d="M81.167,215.667
            		c-4.102,7.518-8.666,38.107,2.333,52.667" />
     <g id="happy3">
