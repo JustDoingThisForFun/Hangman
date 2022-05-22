@@ -1,27 +1,15 @@
-# Hangman
+Angular project using typescript complete hangman game that uses db.json for collecting the secret words.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Some screenshot from the game:
 
-## Development server
+Initial:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![image](https://user-images.githubusercontent.com/12135734/169696325-ac228475-a2d0-455d-a57d-b7824a5dbba0.png)
 
-## Code scaffolding
+Mid game:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![image](https://user-images.githubusercontent.com/12135734/169696409-5fb6c377-a2d4-40aa-af19-f04b63316017.png)
 
-## Build
+Game over:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![image](https://user-images.githubusercontent.com/12135734/169696296-65e61846-3a4a-4656-9897-d8ef6b442c41.png)
