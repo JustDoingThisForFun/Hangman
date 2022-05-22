@@ -1,25 +1,33 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HangmanService } from 'src/app/services/hangman.service';
 
 @Component({
   selector: 'app-hangman',
   templateUrl: './hangman.component.html',
-  styleUrls: ['./hangman.component.css']
+  styleUrls: ['./hangman.component.scss'],
 })
 export class HangmanComponent implements OnInit {
-
   question: string = '';
-  secretWord: string[] = [];
+  questions: string[] = [];
   guesses: string[] = [];
   category: string = '';
-
-  constructor(private hangmanService: HangmanService) { }
+  restartGameBtnShown = false;
+  constructor(
+    private hangmanService: HangmanService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
-    this.hangmanService.getSecretWords().subscribe((response) => {
-      this.secretWord = response.items;
+    let jsonPath;
+    const url = this.location.path();
+    if (url.includes('jsonPath')) {
+      jsonPath = url.split('jsonPath=')[1];
+    }
+    this.hangmanService.getQuestions(jsonPath).subscribe((response) => {
+      this.questions = response.items;
       this.category = response.category;
-      this.selectNewWord();
+      this.pickNewQuestion();
     });
   }
 
@@ -27,7 +35,7 @@ export class HangmanComponent implements OnInit {
     if (!letter || this.guesses.includes(letter)) {
       return;
     }
-    this.guesses = [...this.guesses, letter]
+    this.guesses = [...this.guesses, letter];
   }
 
   dummyClick() {
@@ -37,12 +45,17 @@ export class HangmanComponent implements OnInit {
 
   reset() {
     this.guesses = [];
-    this.selectNewWord();
+    this.pickNewQuestion();
+    this.restartGameBtnShown = false;
   }
 
-  selectNewWord() {
-    const randomWord = Math.floor(Math.random() * this.secretWord.length);
-    this.question = this.secretWord[randomWord];
+  pickNewQuestion() {
+    const randomIndex = Math.floor(Math.random() * this.questions.length);
+    this.question = this.questions[randomIndex];
     console.log(this.question);
+  }
+
+  onGameFinished() {
+    this.restartGameBtnShown = true;
   }
 }
