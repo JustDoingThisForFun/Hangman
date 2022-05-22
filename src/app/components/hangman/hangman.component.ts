@@ -27,10 +27,8 @@ export class HangmanComponent implements OnInit {
     if (!letter || this.guesses.includes(letter)) {
       return;
     }
-    this.guesses.push(letter);
+    this.guesses = [...this.guesses, letter]
   }
-
-  https://www.youtube.com/watch?v=usPsRB-jNjI 23:35
 
   dummyClick() {
     const key = prompt('Enter a key') || '';
@@ -47,5 +45,4 @@ export class HangmanComponent implements OnInit {
     this.question = this.secretWords[randomWord];
     console.log(this.question);
   }
-
 }
